@@ -3,17 +3,29 @@
 ## Company Information
 
 **Company:** Junk Removal Now
-**Owner:** Diane Bennett
+**Owner:** Diane "Dee" Bennett
+**Location:** Sanford, Florida
 **Services:** Professional junk removal and furniture disposal
 
 ## Related Businesses
 
-- **Dee's Furniture** - Furniture resale/donation partner
 - **Junk Removal Now** - Primary junk removal service
+- **Dee's Furniture** - Furniture resale/donation partner
+- **Rental Properties** - Property management (to document)
 
 ## Service Areas
 
-To be defined based on operational coverage
+**Primary Service Area:** Sanford, FL
+
+**Coverage Area** (to be confirmed):
+
+- Sanford, FL
+- Lake Mary, FL
+- Longwood, FL
+- Altamonte Springs, FL
+- Winter Springs, FL
+- Heathrow, FL
+- Seminole County area
 
 ## Service Offerings
 

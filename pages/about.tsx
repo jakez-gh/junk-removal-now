@@ -24,16 +24,18 @@ export default function About() {
             <div>
               <h2 className="text-3xl font-bold mb-6">Who We Are</h2>
               <p className="text-gray-700 mb-4 text-lg">
-                Junk Removal Now is a locally-owned and operated junk removal service dedicated to
-                helping our community get organized and live clutter-free lives.
+                Junk Removal Now is a locally-owned and operated junk removal service proudly
+                serving Sanford, Florida and the surrounding Seminole County area.
               </p>
               <p className="text-gray-700 mb-4 text-lg">
                 Founded on the principles of reliability, professionalism, and customer
-                satisfaction, we take pride in delivering exceptional service every time.
+                satisfaction, we take pride in delivering exceptional service to our community.
+                Owner Diane &ldquo;Dee&rdquo; Bennett brings years of experience and a personal
+                touch to every job.
               </p>
               <p className="text-gray-700 text-lg">
-                Whether you need to clear out a single room or manage an entire estate, our
-                experienced team is ready to help.
+                Whether you need to clear out a single room or manage an entire estate cleanout, our
+                experienced team is ready to help you reclaim your space.
               </p>
             </div>
             <div className="bg-blue-50 rounded-lg p-8">

@@ -7,10 +7,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Junk Removal Now - Professional Junk Removal Services</title>
+        <title>Junk Removal Now - Professional Junk Removal Services | Sanford, FL</title>
         <meta
           name="description"
-          content="Professional junk removal and furniture disposal services"
+          content="Professional junk removal and furniture disposal services in Sanford, FL and Seminole County. Fast, reliable, eco-friendly."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -19,13 +19,16 @@ export default function Home() {
           <div className="max-w-6xl mx-auto px-4">
             <h1 className="text-4xl font-bold">Junk Removal Now</h1>
             <p className="text-xl mt-2">Professional Junk Removal & Furniture Services</p>
+            <p className="text-lg mt-1 opacity-90">Serving Sanford, FL & Seminole County</p>
           </div>
         </header>
 
         <section className="max-w-6xl mx-auto px-4 py-12">
           <h2 className="text-3xl font-bold mb-6">Welcome</h2>
           <p className="text-lg text-gray-700 mb-4">
-            We provide professional junk removal and furniture disposal services in your area.
+            We provide professional junk removal and furniture disposal services throughout Sanford,
+            Florida and the surrounding Seminole County area. Fast, reliable, and eco-friendly
+            service you can trust.
           </p>
           <Link href="/contact">
             <button className="bg-blue-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-700 transition">

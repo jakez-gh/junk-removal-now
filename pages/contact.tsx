@@ -75,9 +75,19 @@ export default function Contact() {
 
               <div className="mb-8">
                 <h3 className="text-xl font-bold mb-2">Service Area</h3>
-                <p className="text-gray-700">
-                  We proudly serve the local area and surrounding communities. Contact us to confirm
-                  service availability in your location.
+                <p className="text-gray-700 mb-3">
+                  Proudly serving Sanford, FL and the surrounding Seminole County area:
+                </p>
+                <ul className="text-gray-700 space-y-1 ml-4">
+                  <li>• Sanford, FL</li>
+                  <li>• Lake Mary, FL</li>
+                  <li>• Longwood, FL</li>
+                  <li>• Altamonte Springs, FL</li>
+                  <li>• Winter Springs, FL</li>
+                  <li>• Heathrow, FL</li>
+                </ul>
+                <p className="text-gray-700 mt-3">
+                  Contact us to confirm service availability in your location.
                 </p>
               </div>
 
