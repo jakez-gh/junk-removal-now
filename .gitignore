@@ -2,7 +2,7 @@
 node_modules
 .pnp
 .pnp.js
-package-lock.json
+# package-lock.json - MUST be committed for CI/CD cache and reproducible builds
 pnpm-lock.yaml
 yarn.lock
 
