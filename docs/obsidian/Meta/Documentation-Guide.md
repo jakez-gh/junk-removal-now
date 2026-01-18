@@ -222,9 +222,11 @@ Repository Root
 1. Identify which document needs updating
 2. Make changes following the document's structure
 3. Include in your commit with proper message:
+
    ```bash
    git commit -m "docs(section): description of changes"
    ```
+
 4. Reference issue if applicable:
 
    ```bash

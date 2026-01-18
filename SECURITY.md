@@ -2,7 +2,7 @@
 
 ## Reporting Security Vulnerabilities
 
-If you discover a security vulnerability in Junk Removal Now, please **do not** create a public GitHub issue. Instead, please email us at security@junkremovalnow.com with the following information:
+If you discover a security vulnerability in Junk Removal Now, please **do not** create a public GitHub issue. Instead, please email us at <security@junkremovalnow.com> with the following information:
 
 1. **Description** of the vulnerability
 2. **Steps to reproduce** the issue
@@ -201,9 +201,9 @@ This project adheres to:
 
 ## Contact
 
-- **Security Email**: security@junkremovalnow.com
-- **Website**: https://www.junkremovalnow.com
-- **GitHub**: https://github.com/jakez-gh/junk-removal-now
+- **Security Email**: <security@junkremovalnow.com>
+- **Website**: <https://www.junkremovalnow.com>
+- **GitHub**: <https://github.com/jakez-gh/junk-removal-now>
 
 ## Additional Resources
 

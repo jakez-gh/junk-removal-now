@@ -89,7 +89,7 @@ npm run build
 
 All commits must follow the Conventional Commit format:
 
-```
+```text
 <type>(<scope>): <subject>
 
 <body>
@@ -155,27 +155,27 @@ Refs #8"
 
 1. Push your branch to GitHub:
 
-```bash
-git push origin feature/your-feature-name
-```
+   ```bash
+   git push origin feature/your-feature-name
+   ```
 
-2. Create a Pull Request on GitHub with:
+1. Create a Pull Request on GitHub with:
    - Clear title describing the change
    - Detailed description of what changed and why
    - Link to related issues (if any)
    - Screenshots for UI changes
 
-3. Ensure all automated checks pass:
+1. Ensure all automated checks pass:
    - ✅ Tests pass
    - ✅ Build succeeds
    - ✅ Linting passes
    - ✅ Type checking passes
 
-4. Request code review from at least one team member
+1. Request code review from at least one team member
 
-5. Address feedback and update your PR
+1. Address feedback and update your PR
 
-6. Once approved, merge your PR
+1. Once approved, merge your PR
 
 ## Testing Guidelines
 
@@ -369,9 +369,9 @@ export default function NewPage() {
 }
 ```
 
-2. Add tests in `tests/e2e/new-page.spec.ts`
-3. Add link to navigation in `pages/_app.tsx` if needed
-4. Update sitemap documentation
+1. Add tests in `tests/e2e/new-page.spec.ts`
+1. Add link to navigation in `pages/_app.tsx` if needed
+1. Update sitemap documentation
 
 ### Adding a New Component
 
@@ -394,9 +394,9 @@ export function MyComponent({ title, children }: MyComponentProps) {
 }
 ```
 
-2. Add tests if component is complex
-3. Document in Storybook if available
-4. Update `components/index.ts` for exports
+1. Add tests if component is complex
+1. Document in Storybook if available
+1. Update `components/index.ts` for exports
 
 ### Updating Dependencies
 

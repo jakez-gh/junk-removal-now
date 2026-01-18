@@ -84,7 +84,7 @@
 
 ## Git Commits Made
 
-```
+```text
 93cb7fd - docs(meta): add repository documentation guide
 f628a4c - docs(changelog): add comprehensive version history
 ebed812 - docs(security): add comprehensive security policy
@@ -130,7 +130,7 @@ cbfb31b - docs(readme): comprehensive project documentation
 
 ## Documentation Hierarchy
 
-```
+```text
 📦 junk-removal-now/
 ├── README.md ..................... Entry point for developers
 ├── CONTRIBUTING.md ............... How to contribute
@@ -300,4 +300,4 @@ The documentation is:
 **Last Updated**: 2026-01-18
 
 All documentation is now publicly available at:  
-https://github.com/jakez-gh/junk-removal-now
+<https://github.com/jakez-gh/junk-removal-now>
