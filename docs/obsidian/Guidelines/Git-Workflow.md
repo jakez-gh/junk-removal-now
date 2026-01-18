@@ -4,7 +4,7 @@
 
 All commits must follow this structure for maintainability and automation:
 
-```
+```text
 <type>(<scope>): <subject>
 
 <body>
@@ -54,7 +54,7 @@ The section of the codebase affected. Examples:
 
 ## Examples
 
-```
+```text
 feat(auth): add JWT token refresh mechanism
 
 Implement automatic token refresh on 401 responses to improve
@@ -63,7 +63,7 @@ user experience when tokens expire during active sessions.
 Fixes #42
 ```
 
-```
+```text
 fix(components): correct button click handler in Header
 
 The onClick handler wasn't properly passing event arguments

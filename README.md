@@ -73,7 +73,7 @@ npm start
 
 ## Project Structure
 
-```
+```text
 junk-removal-now/
 ├── .github/workflows/       # CI/CD workflows
 ├── components/              # React components
@@ -137,7 +137,7 @@ See [Git Workflow Guidelines](docs/obsidian/Guidelines/Git-Workflow.md) for deta
 
 ### Commit Message Format
 
-```
+```text
 <type>(<scope>): <subject>
 
 <body>
@@ -147,7 +147,7 @@ See [Git Workflow Guidelines](docs/obsidian/Guidelines/Git-Workflow.md) for deta
 
 Example:
 
-```
+```bash
 feat(booking): add calendar date picker
 
 Implement calendar-based date selection for service booking
