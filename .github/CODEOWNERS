@@ -1,0 +1,31 @@
+# Code Owners
+# 
+# These owners will be automatically requested for review when someone 
+# opens a pull request that modifies files matching the patterns below.
+#
+# More info: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for everything in the repo
+* @jakez-gh
+
+# Documentation
+/docs/ @jakez-gh
+/*.md @jakez-gh
+
+# CI/CD and infrastructure
+/.github/ @jakez-gh
+/playwright.config.ts @jakez-gh
+/next.config.js @jakez-gh
+/tsconfig.json @jakez-gh
+
+# Security-sensitive files
+/SECURITY.md @jakez-gh
+/.github/workflows/ @jakez-gh
+
+# Tests
+/tests/ @jakez-gh
+
+# Configuration files
+/.eslintrc.json @jakez-gh
+/.prettierrc @jakez-gh
+/.husky/ @jakez-gh

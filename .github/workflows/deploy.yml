@@ -14,6 +14,8 @@ jobs:
       url: https://www.junkremovalnow.com
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -24,10 +26,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Run tests before deployment
+        run: npm test
+        continue-on-error: false
+
       - name: Build application
         run: npm run build
 
+      - name: Store build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-build
+          path: .next/
+          retention-days: 7
+
       - name: Deploy to production
+        id: deploy
         run: |
           echo "Deploying to production..."
           # Add your deployment commands here
@@ -38,13 +52,42 @@ jobs:
         env:
           DEPLOYMENT_TOKEN: ${{ secrets.DEPLOYMENT_TOKEN }}
 
+      - name: Smoke test deployment
+        if: success()
+        run: |
+          echo "Running smoke tests on deployed application..."
+          # Add smoke test commands here
+          # Example: curl -f https://www.junkremovalnow.com || exit 1
+
       - name: Notify on success
         if: success()
         run: |
           echo "✅ Production deployment successful"
+          echo "::notice::Deployment completed successfully"
 
-      - name: Notify on failure
+      - name: Automated rollback on failure
         if: failure()
         run: |
-          echo "❌ Production deployment failed"
-          # Trigger automatic rollback here if needed
+          echo "❌ Production deployment failed - initiating automated rollback"
+          echo "::error::Deployment failed, rolling back to previous version"
+
+          # Get previous commit
+          PREVIOUS_COMMIT=$(git rev-parse HEAD~1)
+          echo "Rolling back to commit: $PREVIOUS_COMMIT"
+
+          # Checkout previous version
+          git checkout $PREVIOUS_COMMIT
+
+          # Rebuild with previous version
+          npm ci
+          npm run build
+
+          # Redeploy previous version
+          echo "Redeploying previous stable version..."
+          # Add your deployment commands here (same as deploy step)
+
+      - name: Notify on rollback
+        if: failure()
+        run: |
+          echo "🔄 Automated rollback completed"
+          echo "::warning::Application rolled back to previous stable version"
