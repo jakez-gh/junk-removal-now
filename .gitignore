@@ -99,3 +99,6 @@ Desktop.ini
 # Misc
 .eslintcache
 .turbo/
+
+# Local Netlify folder
+.netlify
