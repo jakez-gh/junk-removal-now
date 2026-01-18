@@ -58,13 +58,14 @@ docs/obsidian/^documents
 docs/obsidian/daily/
 docs/obsidian/*.json
 
-# Screenshots and test data (but keep the directory structure)
-*.png
+# Screenshots - KEEP test screenshots for visual regression testing
+# Exclude other image files but include test screenshots
 *.jpg
 *.jpeg
 *.gif
 *.bmp
-!screenshots/.gitkeep
+!tests/screenshots/**/*.png
+!tests/screenshots/.gitkeep
 
 # Logs
 logs/
