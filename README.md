@@ -1,11 +1,13 @@
 # Junk Removal Now
 
 [![Tests](https://github.com/jakez-gh/junk-removal-now/actions/workflows/tests.yml/badge.svg)](https://github.com/jakez-gh/junk-removal-now/actions/workflows/tests.yml)
+[![Deploy](https://github.com/jakez-gh/junk-removal-now/actions/workflows/deploy.yml/badge.svg)](https://github.com/jakez-gh/junk-removal-now/actions/workflows/deploy.yml)
 [![GitHub](https://img.shields.io/badge/GitHub-public-brightgreen)](https://github.com/jakez-gh/junk-removal-now)
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 Professional junk removal and furniture disposal services website and booking platform.
 
+> **Live Site:** https://celebrated-mermaid-d8b042.netlify.app  
 > Built with **Next.js 14**, **React 18**, **TypeScript**, **Tailwind CSS**, and **Playwright Testing**
 
 ## 🚀 Quick Start
