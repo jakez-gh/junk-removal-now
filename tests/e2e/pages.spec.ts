@@ -1,120 +1,162 @@
 import { test, expect } from '@playwright/test';
+import { TestUtils } from '../utils/test-utils';
 
-test('Services page loads and displays all services', async ({ page }) => {
-  await page.goto('/services');
+test.describe('Page Tests', () => {
+  test('Services page loads and displays all services', async ({ page }) => {
+    await page.goto('/services');
+    await TestUtils.waitForPageLoad(page);
 
-  // Check page title
-  await expect(page).toHaveTitle(/Our Services/);
+    // Capture initial load
+    await TestUtils.captureScreenshot(page, 'pages', '01-services-initial');
 
-  // Check main heading
-  const heading = page.locator('h1');
-  await expect(heading).toContainText('Our Services');
+    // Check page title
+    await expect(page).toHaveTitle(/Our Services/);
 
-  // Check service cards are visible
-  const serviceCards = page.locator('[class*="shadow-md"]');
-  const count = await serviceCards.count();
-  expect(count).toBeGreaterThan(0);
+    // Check main heading
+    const heading = page.locator('h1');
+    await expect(heading).toContainText('Our Services');
 
-  // Check "Why Choose Us" section
-  const whyChooseHeading = page.locator('text=Why Choose Us');
-  await expect(whyChooseHeading).toBeVisible();
+    // Check service cards are visible
+    const serviceCards = page.locator('[class*="shadow-md"]');
+    const count = await serviceCards.count();
+    expect(count).toBeGreaterThan(0);
 
-  // Check Book Now button
-  const bookButton = page.locator('button:has-text("Book Now")');
-  await expect(bookButton).toBeVisible();
-  await expect(bookButton).toBeEnabled();
-});
+    // Check "Why Choose Us" section
+    const whyChooseHeading = page.locator('text=Why Choose Us');
+    await expect(whyChooseHeading).toBeVisible();
 
-test('About page displays company information', async ({ page }) => {
-  await page.goto('/about');
+    // Check Book Now button
+    const bookButton = page.locator('button:has-text("Book Now")');
+    await expect(bookButton).toBeVisible();
+    await expect(bookButton).toBeEnabled();
 
-  // Check page title
-  await expect(page).toHaveTitle(/About Us/);
+    // Capture responsive screenshots
+    await TestUtils.captureResponsiveScreenshots(page, 'pages', 'services-page');
+  });
 
-  // Check main heading
-  const heading = page.locator('h1');
-  await expect(heading).toContainText('About');
+  test('About page displays company information', async ({ page }) => {
+    await page.goto('/about');
+    await TestUtils.waitForPageLoad(page);
 
-  // Check "Who We Are" section
-  const whoWeAre = page.locator('text=Who We Are');
-  await expect(whoWeAre).toBeVisible();
+    // Capture initial load
+    await TestUtils.captureScreenshot(page, 'pages', '02-about-initial');
 
-  // Check "Our Process" section
-  const ourProcess = page.locator('text=Our Process');
-  await expect(ourProcess).toBeVisible();
+    // Check page title
+    await expect(page).toHaveTitle(/About Us/);
 
-  // Check process steps are numbered
-  const steps = page.locator('[class*="rounded-full"]');
-  expect(await steps.count()).toBe(4);
-});
+    // Check main heading
+    const heading = page.locator('h1');
+    await expect(heading).toContainText('About');
 
-test('Contact page displays form and contact info', async ({ page }) => {
-  await page.goto('/contact');
+    // Check "Who We Are" section
+    const whoWeAre = page.locator('text=Who We Are');
+    await expect(whoWeAre).toBeVisible();
 
-  // Check page title
-  await expect(page).toHaveTitle(/Contact Us/);
+    // Check "Our Process" section
+    const ourProcess = page.locator('text=Our Process');
+    await expect(ourProcess).toBeVisible();
 
-  // Check main heading
-  const heading = page.locator('h1');
-  await expect(heading).toContainText('Contact');
+    // Check process steps are numbered
+    const steps = page.locator('[class*="rounded-full"]');
+    expect(await steps.count()).toBe(4);
 
-  // Check contact form fields
-  const nameField = page.locator('input#name');
-  const emailField = page.locator('input#email');
-  const phoneField = page.locator('input#phone');
-  const messageField = page.locator('textarea#message');
+    // Capture responsive screenshots
+    await TestUtils.captureResponsiveScreenshots(page, 'pages', 'about-page');
+  });
 
-  await expect(nameField).toBeVisible();
-  await expect(emailField).toBeVisible();
-  await expect(phoneField).toBeVisible();
-  await expect(messageField).toBeVisible();
+  test('Contact page displays form and contact info', async ({ page }) => {
+    await page.goto('/contact');
+    await TestUtils.waitForPageLoad(page);
 
-  // Check submit button
-  const submitButton = page.locator('button:has-text("Get Free Estimate")');
-  await expect(submitButton).toBeVisible();
-  await expect(submitButton).toBeEnabled();
+    // Capture initial load
+    await TestUtils.captureScreenshot(page, 'pages', '03-contact-initial');
 
-  // Check hours section
-  const hoursHeading = page.locator('text=Hours');
-  await expect(hoursHeading).toBeVisible();
-});
+    // Check page title
+    await expect(page).toHaveTitle(/Contact Us/);
 
-test('Contact form submission works', async ({ page }) => {
-  await page.goto('/contact');
+    // Check main heading
+    const heading = page.locator('h1');
+    await expect(heading).toContainText('Contact');
 
-  // Fill out the form
-  await page.fill('input#name', 'John Doe');
-  await page.fill('input#email', 'john@example.com');
-  await page.fill('input#phone', '555-1234');
-  await page.selectOption('select#serviceType', 'furniture');
-  await page.fill('textarea#message', 'Need furniture removal');
+    // Check contact form fields
+    const nameField = page.locator('input#name');
+    const emailField = page.locator('input#email');
+    const phoneField = page.locator('input#phone');
+    const messageField = page.locator('textarea#message');
 
-  // Submit the form
-  await page.click('button:has-text("Get Free Estimate")');
+    await expect(nameField).toBeVisible();
+    await expect(emailField).toBeVisible();
+    await expect(phoneField).toBeVisible();
+    await expect(messageField).toBeVisible();
 
-  // Check success message
-  const successMessage = page.locator('text=Thank You!');
-  await expect(successMessage).toBeVisible();
+    // Check submit button
+    const submitButton = page.locator('button:has-text("Get Free Estimate")');
+    await expect(submitButton).toBeVisible();
+    await expect(submitButton).toBeEnabled();
 
-  const thankYouText = page.locator("text=We've received your inquiry");
-  await expect(thankYouText).toBeVisible();
-});
+    // Check hours section
+    const hoursHeading = page.locator('text=Hours');
+    await expect(hoursHeading).toBeVisible();
 
-test('Navigation links work between pages', async ({ page }) => {
-  await page.goto('/');
+    // Capture responsive screenshots
+    await TestUtils.captureResponsiveScreenshots(page, 'pages', 'contact-page');
+  });
 
-  // Click Services link in footer
-  await page.click('a[href="/services"]:has-text("View Services")');
-  await expect(page).toHaveURL(/\/services/);
+  test('Contact form submission works', async ({ page }) => {
+    await page.goto('/contact');
+    await TestUtils.waitForPageLoad(page);
 
-  // Click About link in footer
-  await page.click('a[href="/about"]:has-text("Read More")');
-  await expect(page).toHaveURL(/\/about/);
+    // Capture empty form
+    await TestUtils.captureScreenshot(page, 'pages', '04-contact-form-empty');
 
-  // Navigate back to home
-  await page.goto('/');
+    // Fill out the form
+    await page.fill('input#name', 'John Doe');
+    await page.fill('input#email', 'john@example.com');
+    await page.fill('input#phone', '555-1234');
+    await page.selectOption('select#serviceType', 'furniture');
+    await page.fill('textarea#message', 'Need furniture removal');
 
-  // Click Contact link in footer
-  await page.click('a[href="/contact"]:has-text("Contact Us")');
-  await expect(page).toHaveURL(/\/contact/);
+    // Capture filled form
+    await TestUtils.captureScreenshot(page, 'pages', '05-contact-form-filled');
+
+    // Submit the form
+    await page.click('button:has-text("Get Free Estimate")');
+
+    // Check success message
+    const successMessage = page.locator('text=Thank You!');
+    await expect(successMessage).toBeVisible();
+
+    const thankYouText = page.locator("text=We've received your inquiry");
+    await expect(thankYouText).toBeVisible();
+
+    // Capture success state
+    await TestUtils.captureScreenshot(page, 'pages', '06-contact-form-success');
+  });
+
+  test('Navigation links work between pages', async ({ page }) => {
+    await page.goto('/');
+    await TestUtils.waitForPageLoad(page);
+
+    // Click Services link in footer
+    await page.click('a[href="/services"]:has-text("View Services")');
+    await expect(page).toHaveURL(/\/services/);
+    await TestUtils.waitForPageLoad(page);
+    await TestUtils.captureScreenshot(page, 'pages', '07-navigation-services');
+
+    // Click About link in footer
+    await page.click('a[href="/about"]:has-text("Read More")');
+    await expect(page).toHaveURL(/\/about/);
+    await TestUtils.waitForPageLoad(page);
+    await TestUtils.captureScreenshot(page, 'pages', '08-navigation-about');
+
+    // Navigate back to home
+    await page.goto('/');
+    await TestUtils.waitForPageLoad(page);
+
+    // Click Contact link in footer
+    await page.click('a[href="/contact"]:has-text("Contact Us")');
+    await expect(page).toHaveURL(/\/contact/);
+    await TestUtils.waitForPageLoad(page);
+    await TestUtils.captureScreenshot(page, 'pages', '09-navigation-contact');
+  });
 });
