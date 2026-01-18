@@ -2,7 +2,7 @@ name: Deploy to Production
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   workflow_dispatch:
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: production
-      url: https://www.junkremovalnow.com
+      url: https://celebrated-mermaid-d8b042.netlify.app
     steps:
       - uses: actions/checkout@v4
         with:
@@ -40,54 +40,46 @@ jobs:
           path: .next/
           retention-days: 7
 
-      - name: Deploy to production
+      - name: Deploy to Netlify
         id: deploy
-        run: |
-          echo "Deploying to production..."
-          # Add your deployment commands here
-          # Examples:
-          # - Deploy to Vercel: vercel --prod
-          # - Deploy to AWS: aws s3 sync .next s3://bucket-name
-          # - SSH deploy: ssh user@host 'cd /app && git pull && npm install && npm run build'
+        uses: nwtgck/actions-netlify@v2.1.0
+        with:
+          publish-dir: './.next'
+          production-branch: master
+          production-deploy: true
+          deploy-message: 'Deploy from GitHub Actions (commit ${{ github.sha }})'
+          netlify-config-path: './netlify.toml'
         env:
-          DEPLOYMENT_TOKEN: ${{ secrets.DEPLOYMENT_TOKEN }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
       - name: Smoke test deployment
         if: success()
         run: |
           echo "Running smoke tests on deployed application..."
-          # Add smoke test commands here
-          # Example: curl -f https://www.junkremovalnow.com || exit 1
+          DEPLOY_URL="${{ steps.deploy.outputs.deploy-url }}"
+
+          # Check site is responsive
+          curl -f "$DEPLOY_URL" || exit 1
+
+          # Check key pages
+          curl -f "$DEPLOY_URL/services" || exit 1
+          curl -f "$DEPLOY_URL/about" || exit 1
+          curl -f "$DEPLOY_URL/contact" || exit 1
+
+          echo "✅ All smoke tests passed"
+          echo "::notice::Site is live at $DEPLOY_URL"
 
       - name: Notify on success
         if: success()
         run: |
           echo "✅ Production deployment successful"
-          echo "::notice::Deployment completed successfully"
+          echo "::notice::Site deployed to ${{ steps.deploy.outputs.deploy-url }}"
+          echo "::notice::Preview: ${{ steps.deploy.outputs.preview-url }}"
 
-      - name: Automated rollback on failure
+      - name: Notify on failure
         if: failure()
         run: |
-          echo "❌ Production deployment failed - initiating automated rollback"
-          echo "::error::Deployment failed, rolling back to previous version"
-
-          # Get previous commit
-          PREVIOUS_COMMIT=$(git rev-parse HEAD~1)
-          echo "Rolling back to commit: $PREVIOUS_COMMIT"
-
-          # Checkout previous version
-          git checkout $PREVIOUS_COMMIT
-
-          # Rebuild with previous version
-          npm ci
-          npm run build
-
-          # Redeploy previous version
-          echo "Redeploying previous stable version..."
-          # Add your deployment commands here (same as deploy step)
-
-      - name: Notify on rollback
-        if: failure()
-        run: |
-          echo "🔄 Automated rollback completed"
-          echo "::warning::Application rolled back to previous stable version"
+          echo "❌ Production deployment failed"
+          echo "::error::Check logs and Netlify dashboard for details"
+          echo "::notice::Previous deployments can be reverted from Netlify dashboard"
