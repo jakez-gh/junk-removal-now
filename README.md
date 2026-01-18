@@ -1,25 +1,37 @@
 # Junk Removal Now
 
+[![Tests](https://github.com/jakez-gh/junk-removal-now/actions/workflows/tests.yml/badge.svg)](https://github.com/jakez-gh/junk-removal-now/actions/workflows/tests.yml)
+[![Deploy](https://github.com/jakez-gh/junk-removal-now/actions/workflows/deploy.yml/badge.svg)](https://github.com/jakez-gh/junk-removal-now/actions/workflows/deploy.yml)
+[![GitHub](https://img.shields.io/badge/GitHub-public-brightgreen)](https://github.com/jakez-gh/junk-removal-now)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
 Professional junk removal and furniture disposal services website and booking platform.
 
-## Getting Started
+> **Live Site:** https://celebrated-mermaid-d8b042.netlify.app  
+> Built with **Next.js 14**, **React 18**, **TypeScript**, **Tailwind CSS**, and **Playwright Testing**
+
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js 18+
-- npm 9+
-- Git with GPG signing enabled
+- **Node.js** 18+
+- **npm** 9+
+- **Git** with GPG configured (optional but recommended)
 
 ### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/jakez-gh/junk-removal-now.git
+cd junk-removal-now
+
 # Install dependencies
 npm install
 
-# Set up pre-commit hooks
+# Set up pre-commit hooks (automatic with npm install)
 npm run prepare
 
-# Create .env.local with your configuration
+# Create environment configuration
 cp .env.example .env.local
 ```
 
@@ -35,7 +47,7 @@ npm run dev
 ### Testing
 
 ```bash
-# Run E2E tests
+# Run all E2E tests
 npm test
 
 # Run tests with UI
@@ -43,6 +55,9 @@ npm run test:ui
 
 # Run tests in headed mode (see browser)
 npm run test:headed
+
+# View test reports
+npx playwright show-report
 ```
 
 ### Code Quality
@@ -71,71 +86,127 @@ npm run build
 npm start
 ```
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 junk-removal-now/
-├── .github/workflows/       # CI/CD workflows
+├── .github/
+│   └── workflows/           # CI/CD configuration
+│       ├── tests.yml        # Automated testing on push/PR
+│       └── deploy.yml       # Production deployment workflow
+├── .vscode/                 # VS Code configuration
 ├── components/              # React components
 ├── docs/
 │   └── obsidian/           # Obsidian documentation vault
-├── pages/                  # Next.js pages
-├── public/                 # Static assets
-├── styles/                 # Global styles
+│       ├── Project/        # Project management docs
+│       ├── Business/       # Business operations
+│       ├── Technical/      # Architecture & decisions
+│       ├── Guidelines/     # Development guidelines
+│       └── Research/       # Research & background
+├── pages/                   # Next.js pages
+│       ├── index.tsx       # Home page
+│       ├── services.tsx    # Services listing
+│       ├── about.tsx       # About page
+│       ├── contact.tsx     # Contact & booking form
+│       ├── _app.tsx        # App wrapper
+│       └── _document.tsx   # HTML document
+├── public/                  # Static assets
+├── styles/
+│       └── globals.css     # Global styles
 ├── tests/
-│   ├── e2e/               # Playwright E2E tests
-│   └── screenshots/       # Test screenshots
-├── types/                 # TypeScript types
-├── utils/                 # Utility functions
-├── .eslintrc.json        # ESLint configuration
-├── .prettierrc            # Prettier configuration
-├── next.config.js        # Next.js configuration
-├── playwright.config.ts  # Playwright configuration
-├── tsconfig.json        # TypeScript configuration
-└── package.json         # Dependencies
+│       ├── e2e/           # Playwright E2E tests
+│       └── screenshots/   # Test screenshots
+├── types/                   # TypeScript type definitions
+├── utils/                   # Utility functions
+├── hooks/                   # React hooks
+├── .eslintrc.json          # ESLint configuration
+├── .prettierrc              # Prettier configuration
+├── .gitignore              # Git ignore rules
+├── next.config.js          # Next.js configuration
+├── playwright.config.ts    # Playwright configuration
+├── tailwind.config.js      # Tailwind CSS configuration
+├── tsconfig.json           # TypeScript configuration
+├── package.json            # Dependencies & scripts
+└── README.md              # This file
 ```
 
-## Quality Gates
+## 🎯 Features
 
-This repository enforces strict code quality standards:
+### Website Pages
+
+- **Home** - Hero section with service overview and CTAs
+- **Services** - Detailed listing of 6 service categories with features
+- **About** - Company mission, values, and process explanation
+- **Contact** - Booking form with service type selection
+
+### Core Capabilities
+
+- ✅ Responsive design across all screen sizes
+- ✅ Fast static site generation with Next.js
+- ✅ TypeScript for type safety
+- ✅ Comprehensive E2E testing with Playwright
+- ✅ Form validation and submission handling
+- ✅ SEO-friendly structure
+- ✅ Security headers configured
+- ✅ Production-ready build optimization
+
+## 🛠 DevSecOps & Quality Gates
 
 ### Pre-commit Hooks
 
-- ✅ ESLint validation
-- ✅ Prettier formatting
-- ✅ Commit message validation
-- ✅ Type checking
+Automatically run before every commit:
+
+- ✅ **ESLint** validation - code quality
+- ✅ **Prettier** formatting - consistent style
+- ✅ **TypeScript** type checking - type safety
+- ✅ **Commit message** validation - conventional format
 
 ### CI/CD Pipeline
 
-- ✅ Automated testing
-- ✅ Code coverage checks
-- ✅ Security scanning
-- ✅ Test failure blocks merge
+GitHub Actions automatically runs on every push and PR:
 
-### Commit Requirements
+- ✅ **Tests** - 24 E2E tests across 3 browsers
+- ✅ **Build** - Production build verification
+- ✅ **Security** - npm audit scanning
+- ✅ **Type Check** - TypeScript validation
+- ✅ **Linting** - Code quality checks
 
-- ✅ GPG signature required
-- ✅ Structured message format
-- ✅ Issue references required
-- ✅ Decision reasoning in body
+### Deployment
 
-## Documentation
+- Manual approval required for production
+- Automatic rollback on deployment failure
+- All tests must pass before merge
+- Code review required for main branch
 
-See [docs/obsidian/README.md](docs/obsidian/README.md) for detailed project documentation.
+## 📊 Testing
 
-### Key Documents
+### Test Coverage
 
-- [Project Overview](docs/obsidian/Project/Overview.md)
-- [Technical Architecture](docs/obsidian/Technical/Architecture.md)
-- [Git Workflow](docs/obsidian/Guidelines/Git-Workflow.md)
-- [Business Operations](docs/obsidian/Business/Operations.md)
+- 24 E2E tests across Chromium, Firefox, and WebKit
+- Homepage functionality tests
+- Page routing and navigation tests
+- Form submission and validation tests
+- Service card rendering tests
 
-## Development Guidelines
+### Run Tests
 
-See [Git Workflow Guidelines](docs/obsidian/Guidelines/Git-Workflow.md) for detailed guidelines.
+```bash
+npm test              # Run all tests
+npm run test:ui      # Interactive test UI
+npm run test:headed  # See browser while testing
+npm run test:debug   # Debug mode
+```
 
-### Commit Message Format
+### Test Structure
+
+Tests are organized by page in `tests/e2e/`:
+
+- `homepage.spec.ts` - Homepage tests
+- `pages.spec.ts` - Services, About, Contact tests
+
+## 📝 Commit Message Format
+
+All commits must follow conventional commit format:
 
 ```
 <type>(<scope>): <subject>
@@ -145,48 +216,148 @@ See [Git Workflow Guidelines](docs/obsidian/Guidelines/Git-Workflow.md) for deta
 <footer>
 ```
 
-Example:
+### Types
 
+- `feat:` A new feature
+- `fix:` A bug fix
+- `docs:` Documentation only
+- `style:` Formatting changes
+- `refactor:` Code refactoring
+- `test:` Test changes
+- `chore:` Tooling/config changes
+
+### Example
+
+```bash
+git commit -m "feat(contact): add form validation
+
+Implement client-side validation for contact form
+to improve UX and prevent invalid submissions.
+
+Fixes #42"
 ```
-feat(booking): add calendar date picker
 
-Implement calendar-based date selection for service booking
-to improve user experience and reduce booking errors.
+## 🚀 Deployment
 
-Fixes #42
+### Prerequisites
+
+1. GitHub repository access
+2. Deployment environment configured
+3. Environment variables set
+
+### Deployment Process
+
+```bash
+# Create feature branch
+git checkout -b feature/your-feature
+
+# Make changes and commit
+git commit -m "feat(scope): description"
+
+# Push to GitHub
+git push origin feature/your-feature
+
+# Create Pull Request on GitHub
+# - All checks must pass
+# - Code review required
+
+# Merge to develop branch after approval
+# - Triggers tests automatically
+
+# Merge to main for production
+# - Triggers deployment workflow
+# - Requires manual approval
 ```
 
-## Deployment
+## 📚 Documentation
 
-Deployments are handled automatically via CI/CD pipeline:
+Comprehensive documentation is available in the Obsidian vault at `docs/obsidian/`:
 
-1. **Test Stage**: All tests must pass
-2. **Build Stage**: Application is built for production
-3. **Review Stage**: Manual approval required
-4. **Deploy Stage**: Automatic rollback on critical failures
+- [Project Overview](docs/obsidian/Project/Overview.md)
+- [Technical Architecture](docs/obsidian/Technical/Architecture.md)
+- [Implementation Progress](docs/obsidian/Project/Implementation-Progress.md)
+- [Git Workflow Guide](docs/obsidian/Guidelines/Git-Workflow.md)
+- [Business Operations](docs/obsidian/Business/Operations.md)
+- [Research Notes](docs/obsidian/Research/)
 
-## Contributing
+## 🔧 Configuration
 
-1. Create a feature branch: `git checkout -b feature/my-feature`
-2. Make your changes with proper commit messages
-3. Ensure all tests pass: `npm test`
-4. Push to your branch: `git push origin feature/my-feature`
-5. Create a Pull Request
+### Environment Variables
 
-All PRs require:
+Create `.env.local` with your configuration:
 
-- Passing tests
-- Code review approval
-- No merge conflicts
+```bash
+NEXT_PUBLIC_SITE_NAME=Junk Removal Now
+NEXT_PUBLIC_SITE_URL=https://www.junkremovalnow.com
+API_BASE_URL=http://localhost:3000/api
+NODE_ENV=development
+```
 
-## License
+See [.env.example](.env.example) for all available options.
 
-MIT
+### VSCode Settings
 
-## Contact
+Recommended extensions and settings are in `.vscode/`:
 
-For inquiries about Junk Removal Now services, visit [www.junkremovalnow.com](https://www.junkremovalnow.com)
+**Recommended Extensions:**
+
+- ESLint - Code quality
+- Prettier - Code formatting
+- Tailwind CSS IntelliSense - CSS help
+- Playwright Test - Test execution
+- Git Graph - Git visualization
+- GitHub Copilot - AI assistance
+
+## 🤝 Contributing
+
+1. Create a feature branch from `develop`
+2. Make your changes following coding standards
+3. Ensure all tests pass locally
+4. Commit with proper message format
+5. Push and create a Pull Request
+6. Await code review and approval
+
+### Code Standards
+
+- **Formatting:** Prettier (enforced via pre-commit)
+- **Linting:** ESLint (enforced via pre-commit)
+- **Types:** TypeScript strict mode (enforced via pre-commit)
+- **Testing:** E2E tests required for UI changes
+- **Documentation:** Update docs/obsidian for significant changes
+
+## 🐛 Reporting Issues
+
+If you find a bug or have a suggestion:
+
+1. Check [existing issues](https://github.com/jakez-gh/junk-removal-now/issues)
+2. Create a new issue with:
+   - Clear title
+   - Detailed description
+   - Steps to reproduce (if applicable)
+   - Expected vs actual behavior
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📞 Contact
+
+For inquiries about Junk Removal Now services:
+
+- **Website:** [www.junkremovalnow.com](https://www.junkremovalnow.com)
+- **Email:** contact@junkremovalnow.com
+- **Owner:** Diane Bennett
+
+## 🎉 Acknowledgments
+
+- Built with [Next.js](https://nextjs.org/)
+- Styled with [Tailwind CSS](https://tailwindcss.com/)
+- Tested with [Playwright](https://playwright.dev/)
+- Code quality with [ESLint](https://eslint.org/) & [Prettier](https://prettier.io/)
 
 ---
 
+**Current Version:** 1.0.0
 **Last Updated:** 2026-01-18
+**Status:** Active Development
+**Repository:** [GitHub](https://github.com/jakez-gh/junk-removal-now)

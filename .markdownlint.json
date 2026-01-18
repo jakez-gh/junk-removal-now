@@ -1,0 +1,8 @@
+{
+  "extends": "markdownlint/style/prettier",
+  "MD013": false,
+  "MD033": false,
+  "MD041": {
+    "front_matter_title": ""
+  }
+}

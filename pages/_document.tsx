@@ -11,7 +11,6 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta charSet="utf-8" />
-          <meta name="theme-color" content="#1f2937" />
         </Head>
         <body>
           <Main />
