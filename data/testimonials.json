@@ -1,0 +1,22 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Customer Name",
+      "rating": 5,
+      "date": "2025-12-01",
+      "text": "Sample testimonial text here - replace with real customer review",
+      "service": "Junk Removal",
+      "location": "City, State"
+    }
+  ],
+  "reviewStats": {
+    "totalReviews": 0,
+    "averageRating": 0,
+    "fivestar": 0,
+    "fourStar": 0,
+    "threeStar": 0,
+    "twoStar": 0,
+    "oneStar": 0
+  }
+}

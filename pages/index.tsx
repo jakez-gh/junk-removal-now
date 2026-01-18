@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
+import Testimonials from '../components/Testimonials';
 
 export default function Home() {
   return (
@@ -80,6 +81,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <Testimonials />
 
         <section className="bg-blue-50 py-12">
           <div className="max-w-6xl mx-auto px-4">
