@@ -155,7 +155,7 @@ Detailed project documentation is maintained in `docs/obsidian/`. See [docs/obsi
 
 ## Documentation Hierarchy
 
-```
+```text
 Repository Root
 ├── README.md (entry point for developers)
 ├── CONTRIBUTING.md (how to contribute)
