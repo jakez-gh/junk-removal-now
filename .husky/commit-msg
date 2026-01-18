@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Commit message validation
+
+COMMIT_MSG=$(cat "$1")
+
+# Regex pattern for conventional commits
+CONVENTIONAL_COMMIT_REGEX='^(feat|fix|docs|style|refactor|perf|test|chore|ci)(\(.+\))?!?: .+$'
+
+if ! echo "$COMMIT_MSG" | grep -qE "$CONVENTIONAL_COMMIT_REGEX"; then
+    echo "❌ Commit message must follow the conventional commit format:"
+    echo ""
+    echo "  <type>(<scope>): <subject>"
+    echo ""
+    echo "Types: feat, fix, docs, style, refactor, perf, test, chore, ci"
+    echo "Example: feat(auth): add JWT token refresh"
+    echo ""
+    echo "Your message: $COMMIT_MSG"
+    exit 1
+fi
+
+exit 0
