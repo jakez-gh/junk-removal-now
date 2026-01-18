@@ -11,11 +11,12 @@ test('Homepage loads and displays title', async ({ page }) => {
   await expect(heading).toContainText('Junk Removal Now');
 
   // Check services section exists
-  const servicesHeading = page.locator('text=Our Services');
+  const servicesHeading = page.locator('h2:has-text("Our Services")').first();
   await expect(servicesHeading).toBeVisible();
 
-  // Check service cards exist
-  const serviceCards = page.locator('[class*="shadow-md"]');
+  // Check service cards exist in services section
+  const serviceSection = page.locator('section').nth(1);
+  const serviceCards = serviceSection.locator('[class*="shadow-md"]');
   await expect(serviceCards).toHaveCount(3);
 });
 
@@ -34,8 +35,9 @@ test('Book a Service button is clickable', async ({ page }) => {
 test('Services are displayed in a responsive grid', async ({ page }) => {
   await page.goto('/');
 
-  // Get all service cards
-  const serviceCards = page.locator('[class*="shadow-md"]');
+  // Get all service cards in the main services section (not footer)
+  const serviceSection = page.locator('section').nth(1);
+  const serviceCards = serviceSection.locator('[class*="shadow-md"]');
   const count = await serviceCards.count();
 
   expect(count).toBe(3);
