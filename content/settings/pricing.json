@@ -1,0 +1,51 @@
+{
+  "startingPrice": "$99",
+  "showPricing": true,
+  "freeEstimates": true,
+  "sameDayService": true,
+  "seniorDiscount": "10% off",
+  "militaryDiscount": "10% off",
+  "paymentMethods": ["Cash", "Credit Card", "Debit Card", "Venmo", "Zelle", "Check"],
+  "services": [
+    {
+      "name": "General Junk Removal",
+      "description": "Removal of household junk, furniture, appliances, and general clutter",
+      "price": "Starting at $99"
+    },
+    {
+      "name": "Furniture Removal",
+      "description": "Safe removal and disposal of old furniture including couches, beds, tables, and more",
+      "price": "Starting at $75"
+    },
+    {
+      "name": "Appliance Removal",
+      "description": "Professional removal of refrigerators, washers, dryers, stoves, and other appliances",
+      "price": "Starting at $75"
+    },
+    {
+      "name": "Estate Cleanouts",
+      "description": "Complete estate cleanout services with respectful handling of belongings",
+      "price": "Custom quote"
+    },
+    {
+      "name": "Garage/Basement Cleanout",
+      "description": "Clear out accumulated items from garages, basements, attics, and storage areas",
+      "price": "Starting at $150"
+    },
+    {
+      "name": "Yard Waste Removal",
+      "description": "Removal of branches, leaves, and other yard debris",
+      "price": "Starting at $99"
+    },
+    {
+      "name": "Construction Debris",
+      "description": "Removal of construction materials and renovation debris",
+      "price": "Custom quote"
+    },
+    {
+      "name": "Hoarding Cleanup",
+      "description": "Compassionate and professional hoarding cleanup services",
+      "price": "Custom quote"
+    }
+  ]
+}

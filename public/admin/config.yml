@@ -1,0 +1,197 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Enterprise-level security
+publish_mode: editorial_workflow
+logo_url: /images/logo.png
+
+# Media management
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "settings"
+    label: "🏢 Business Settings"
+    files:
+      - label: "Company Information"
+        name: "company"
+        file: "content/settings/company.json"
+        fields:
+          - { label: "Business Name", name: "businessName", widget: "string", hint: "Official business name" }
+          - { label: "Tagline", name: "tagline", widget: "string", hint: "Short description that appears in headers" }
+          - { label: "Owner Name", name: "ownerName", widget: "string" }
+          - { label: "About Us - Short", name: "aboutShort", widget: "text", hint: "Brief description (1-2 sentences)" }
+          - { label: "About Us - Full", name: "aboutFull", widget: "markdown", hint: "Full about us content" }
+          - { label: "Years in Business", name: "yearsInBusiness", widget: "number", valueType: "int", min: 0 }
+          - { label: "License Number", name: "licenseNumber", widget: "string", required: false }
+          - { label: "Insurance Info", name: "insuranceInfo", widget: "string", required: false }
+      
+      - label: "Contact Information"
+        name: "contact"
+        file: "content/settings/contact.json"
+        fields:
+          - { label: "Business Phone", name: "phone", widget: "string", hint: "Numbers only, e.g., 4075558585" }
+          - { label: "Phone Display", name: "phoneDisplay", widget: "string", hint: "e.g., (407) 555-JUNK" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Secondary Email", name: "secondaryEmail", widget: "string", required: false }
+          - { label: "Address Line 1", name: "address1", widget: "string" }
+          - { label: "Address Line 2", name: "address2", widget: "string", required: false }
+          - { label: "City", name: "city", widget: "string" }
+          - { label: "State", name: "state", widget: "string" }
+          - { label: "ZIP Code", name: "zip", widget: "string" }
+          - { label: "Emergency Phone", name: "emergencyPhone", widget: "string", required: false }
+      
+      - label: "Business Hours"
+        name: "hours"
+        file: "content/settings/hours.json"
+        fields:
+          - { label: "Monday", name: "monday", widget: "string", default: "8:00 AM - 6:00 PM" }
+          - { label: "Tuesday", name: "tuesday", widget: "string", default: "8:00 AM - 6:00 PM" }
+          - { label: "Wednesday", name: "wednesday", widget: "string", default: "8:00 AM - 6:00 PM" }
+          - { label: "Thursday", name: "thursday", widget: "string", default: "8:00 AM - 6:00 PM" }
+          - { label: "Friday", name: "friday", widget: "string", default: "8:00 AM - 6:00 PM" }
+          - { label: "Saturday", name: "saturday", widget: "string", default: "9:00 AM - 5:00 PM" }
+          - { label: "Sunday", name: "sunday", widget: "string", default: "By appointment" }
+          - { label: "After-Hours Available?", name: "afterHours", widget: "boolean", default: true }
+          - { label: "24/7 Emergency Service?", name: "emergency247", widget: "boolean", default: false }
+      
+      - label: "Service Areas"
+        name: "serviceAreas"
+        file: "content/settings/service-areas.json"
+        fields:
+          - label: "Primary Service Area"
+            name: "primaryArea"
+            widget: "string"
+            default: "Seminole County, FL"
+          - label: "Service Radius (miles)"
+            name: "serviceRadius"
+            widget: "number"
+            valueType: "int"
+            default: 25
+          - label: "Cities Served"
+            name: "cities"
+            widget: "list"
+            fields:
+              - { label: "City Name", name: "name", widget: "string" }
+              - { label: "State", name: "state", widget: "string", default: "FL" }
+              - { label: "Featured City?", name: "featured", widget: "boolean", default: false }
+      
+      - label: "Social Media"
+        name: "social"
+        file: "content/settings/social.json"
+        fields:
+          - { label: "Facebook URL", name: "facebook", widget: "string", required: false, hint: "Full URL to Facebook page" }
+          - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
+          - { label: "Twitter/X URL", name: "twitter", widget: "string", required: false }
+          - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }
+          - { label: "YouTube URL", name: "youtube", widget: "string", required: false }
+          - { label: "Yelp URL", name: "yelp", widget: "string", required: false }
+          - { label: "Google Business Profile", name: "googleBusiness", widget: "string", required: false }
+          - { label: "Nextdoor URL", name: "nextdoor", widget: "string", required: false }
+      
+      - label: "Pricing & Services"
+        name: "pricing"
+        file: "content/settings/pricing.json"
+        fields:
+          - { label: "Starting Price", name: "startingPrice", widget: "string", hint: "e.g., $99", default: "$99" }
+          - { label: "Show Pricing on Site?", name: "showPricing", widget: "boolean", default: true }
+          - { label: "Free Estimates?", name: "freeEstimates", widget: "boolean", default: true }
+          - { label: "Same Day Service?", name: "sameDayService", widget: "boolean", default: true }
+          - { label: "Senior Discount", name: "seniorDiscount", widget: "string", required: false, hint: "e.g., 10% off" }
+          - { label: "Military Discount", name: "militaryDiscount", widget: "string", required: false }
+          - { label: "Payment Methods", name: "paymentMethods", widget: "list", default: ["Cash", "Credit Card", "Debit Card", "Venmo", "Zelle"] }
+          - label: "Service Types"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Service Name", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Starting Price", name: "price", widget: "string", required: false }
+      
+      - label: "SEO & Meta Tags"
+        name: "seo"
+        file: "content/settings/seo.json"
+        fields:
+          - { label: "Site Title", name: "siteTitle", widget: "string", default: "Junk Removal Now - Sanford, FL" }
+          - { label: "Site Description", name: "siteDescription", widget: "text", hint: "Meta description for search engines" }
+          - { label: "Keywords", name: "keywords", widget: "list", hint: "SEO keywords" }
+          - { label: "Google Analytics ID", name: "googleAnalyticsId", widget: "string", required: false, hint: "e.g., G-XXXXXXXXXX" }
+          - { label: "Google Tag Manager ID", name: "googleTagManagerId", widget: "string", required: false }
+          - { label: "Facebook Pixel ID", name: "facebookPixelId", widget: "string", required: false }
+      
+      - label: "Branding & Design"
+        name: "branding"
+        file: "content/settings/branding.json"
+        fields:
+          - { label: "Logo", name: "logo", widget: "image", required: false }
+          - { label: "Favicon", name: "favicon", widget: "image", required: false }
+          - { label: "Primary Color", name: "primaryColor", widget: "string", default: "#2563eb", hint: "Hex color code" }
+          - { label: "Secondary Color", name: "secondaryColor", widget: "string", default: "#1e40af" }
+          - { label: "Accent Color", name: "accentColor", widget: "string", default: "#10b981" }
+          - { label: "Font Family", name: "fontFamily", widget: "select", options: ["Default", "Roboto", "Open Sans", "Montserrat", "Lato", "Poppins"], default: "Default" }
+
+  - name: "testimonials"
+    label: "⭐ Customer Testimonials"
+    folder: "content/testimonials"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Customer Name", name: "name", widget: "string" }
+      - { label: "Rating (1-5 stars)", name: "rating", widget: "number", valueType: "int", min: 1, max: 5, default: 5 }
+      - { label: "Review Text", name: "text", widget: "text" }
+      - { label: "Service Type", name: "service", widget: "select", options: ["Junk Removal", "Furniture Removal", "Estate Cleanout", "Appliance Removal", "Garage Cleanout", "Other"] }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Customer Photo", name: "photo", widget: "image", required: false }
+      - { label: "Location (City)", name: "location", widget: "string", required: false }
+      - { label: "Featured?", name: "featured", widget: "boolean", default: false, hint: "Show on homepage" }
+      - { label: "Verified?", name: "verified", widget: "boolean", default: true }
+
+  - name: "faq"
+    label: "❓ FAQ Items"
+    folder: "content/faq"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Question", name: "question", widget: "string" }
+      - { label: "Answer", name: "answer", widget: "markdown" }
+      - { label: "Order", name: "order", widget: "number", valueType: "int", min: 1, default: 1, hint: "Display order (lower numbers first)" }
+      - { label: "Category", name: "category", widget: "select", options: ["Pricing", "Service", "Scheduling", "General", "Safety", "Recycling"], default: "General" }
+      - { label: "Show on Homepage?", name: "showOnHome", widget: "boolean", default: false }
+
+  - name: "projects"
+    label: "📸 Project Gallery"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Project Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Before Photo", name: "beforePhoto", widget: "image" }
+      - { label: "After Photo", name: "afterPhoto", widget: "image" }
+      - { label: "Additional Photos", name: "additionalPhotos", widget: "list", field: { label: "Photo", name: "photo", widget: "image" }, required: false }
+      - { label: "Service Type", name: "serviceType", widget: "select", options: ["Junk Removal", "Furniture Removal", "Estate Cleanout", "Garage Cleanout", "Hoarding Cleanup", "Construction Debris", "Other"] }
+      - { label: "Date Completed", name: "date", widget: "datetime" }
+      - { label: "Location (City)", name: "location", widget: "string" }
+      - { label: "Customer Testimonial", name: "testimonial", widget: "text", required: false }
+      - { label: "Featured Project?", name: "featured", widget: "boolean", default: false }
+      - { label: "Items Removed", name: "itemsRemoved", widget: "number", valueType: "float", required: false, hint: "Weight in tons or cubic yards" }
+      - { label: "Unit", name: "unit", widget: "select", options: ["tons", "cubic yards", "truckloads"], default: "cubic yards", required: false }
+  
+  - name: "blog"
+    label: "📝 Blog Posts"
+    folder: "content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Author", name: "author", widget: "string", default: "Junk Removal Now" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
+      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short preview text" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Category", name: "category", widget: "select", options: ["Tips", "News", "Case Study", "How-To", "Industry"], default: "Tips" }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Published", name: "published", widget: "boolean", default: false }
+      - { label: "SEO Title", name: "seoTitle", widget: "string", required: false }
+      - { label: "SEO Description", name: "seoDescription", widget: "text", required: false }

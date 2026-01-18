@@ -7,7 +7,7 @@ import fs from 'fs/promises';
  */
 export class TestUtils {
   /**
-   * Capture a screenshot with a descriptive name and store it in a git-friendly format
+   * Capture a screenshot with a descriptive name and store it in the obsidian demo folder
    * @param page - Playwright page object
    * @param testName - Name of the test
    * @param screenshotName - Descriptive name for the screenshot
@@ -17,7 +17,14 @@ export class TestUtils {
     testName: string,
     screenshotName: string
   ): Promise<void> {
-    const screenshotsDir = path.join(process.cwd(), 'tests', 'screenshots', testName);
+    const screenshotsDir = path.join(
+      process.cwd(),
+      'docs',
+      'obsidian',
+      'demo',
+      'screenshots',
+      testName
+    );
 
     // Ensure directory exists
     await fs.mkdir(screenshotsDir, { recursive: true });

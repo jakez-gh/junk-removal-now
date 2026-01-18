@@ -2,6 +2,9 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import Testimonials from '../components/Testimonials';
+import BookingProcess from '../components/BookingProcess';
+import FAQ from '../components/FAQ';
+import ItemsWeRemove from '../components/ItemsWeRemove';
 
 export default function Home() {
   return (
@@ -17,9 +20,20 @@ export default function Home() {
       <main className="min-h-screen bg-white">
         <header className="bg-blue-600 text-white py-8">
           <div className="max-w-6xl mx-auto px-4">
-            <h1 className="text-4xl font-bold">Junk Removal Now</h1>
+            <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+              <h1 className="text-4xl font-bold">Junk Removal Now</h1>
+              <a
+                href="tel:4075558585"
+                className="mt-4 md:mt-0 bg-white text-blue-600 px-6 py-3 rounded-lg font-bold text-xl hover:bg-gray-100 transition flex items-center gap-2"
+              >
+                📞 (407) 555-JUNK
+              </a>
+            </div>
             <p className="text-xl mt-2">Professional Junk Removal & Furniture Services</p>
             <p className="text-lg mt-1 opacity-90">Serving Sanford, FL & Seminole County</p>
+            <div className="mt-4 inline-block bg-yellow-400 text-blue-900 px-4 py-2 rounded-full font-bold text-sm">
+              ⚡ SAME-DAY SERVICE AVAILABLE
+            </div>
           </div>
         </header>
 
@@ -85,7 +99,13 @@ export default function Home() {
           </div>
         </section>
 
+        <BookingProcess />
+
+        <ItemsWeRemove />
+
         <Testimonials />
+
+        <FAQ />
 
         <section className="bg-blue-50 py-12">
           <div className="max-w-6xl mx-auto px-4">

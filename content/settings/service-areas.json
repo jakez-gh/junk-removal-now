@@ -1,0 +1,16 @@
+{
+  "primaryArea": "Seminole County, FL",
+  "serviceRadius": 25,
+  "cities": [
+    { "name": "Sanford", "state": "FL", "featured": true },
+    { "name": "Lake Mary", "state": "FL", "featured": true },
+    { "name": "Longwood", "state": "FL", "featured": false },
+    { "name": "Altamonte Springs", "state": "FL", "featured": false },
+    { "name": "Winter Springs", "state": "FL", "featured": false },
+    { "name": "Heathrow", "state": "FL", "featured": false },
+    { "name": "Oviedo", "state": "FL", "featured": false },
+    { "name": "Casselberry", "state": "FL", "featured": false },
+    { "name": "Winter Park", "state": "FL", "featured": false },
+    { "name": "Maitland", "state": "FL", "featured": false }
+  ]
+}

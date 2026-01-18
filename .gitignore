@@ -58,14 +58,18 @@ docs/obsidian/^documents
 docs/obsidian/daily/
 docs/obsidian/*.json
 
-# Screenshots - KEEP test screenshots for visual regression testing
-# Exclude other image files but include test screenshots
+# Screenshots - Keep demo screenshots for documentation
+# Old location - ignore
+tests/screenshots/
+# New location in obsidian - track these for documentation
+!docs/obsidian/demo/screenshots/**/*.png
+!docs/obsidian/demo/screenshots/.gitkeep
+
+# Other images
 *.jpg
 *.jpeg
 *.gif
 *.bmp
-!tests/screenshots/**/*.png
-!tests/screenshots/.gitkeep
 
 # Logs
 logs/

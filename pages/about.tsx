@@ -14,7 +14,15 @@ export default function About() {
       <main className="min-h-screen bg-white">
         <div className="bg-blue-600 text-white py-12">
           <div className="max-w-6xl mx-auto px-4">
-            <h1 className="text-4xl font-bold mb-4">About Junk Removal Now</h1>
+            <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+              <h1 className="text-4xl font-bold">About Junk Removal Now</h1>
+              <a
+                href="tel:4075558585"
+                className="mt-4 md:mt-0 bg-white text-blue-600 px-6 py-3 rounded-lg font-bold text-xl hover:bg-gray-100 transition"
+              >
+                📞 (407) 555-JUNK
+              </a>
+            </div>
             <p className="text-xl">Professional junk removal with a personal touch</p>
           </div>
         </div>

@@ -25,10 +25,10 @@ test.describe('Page Tests', () => {
     const whyChooseHeading = page.locator('text=Why Choose Us');
     await expect(whyChooseHeading).toBeVisible();
 
-    // Check Book Now button
-    const bookButton = page.locator('button:has-text("Book Now")');
-    await expect(bookButton).toBeVisible();
-    await expect(bookButton).toBeEnabled();
+    // Check call to action link
+    const callButton = page.locator('a:has-text("Call (407) 555-JUNK")');
+    await expect(callButton).toBeVisible();
+    await expect(callButton).toHaveAttribute('href', 'tel:4075558585');
 
     // Capture responsive screenshots
     await TestUtils.captureResponsiveScreenshots(page, 'pages', 'services-page');

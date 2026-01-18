@@ -24,12 +24,39 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // In a real application, this would send data to an API
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', serviceType: '', message: '' });
-    }, 3000);
+
+    try {
+      // Netlify Forms automatically handles form submissions
+      // Data will be sent to Netlify and Dee will get email notifications
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          'form-name': 'contact',
+          ...formData,
+        }).toString(),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        // Track submission in Google Analytics if available
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'form_submission', {
+            event_category: 'Contact',
+            event_label: 'Quote Request',
+          });
+        }
+        setTimeout(() => {
+          setSubmitted(false);
+          setFormData({ name: '', email: '', phone: '', serviceType: '', message: '' });
+        }, 5000);
+      } else {
+        alert('Oops! Something went wrong. Please call us directly at (407) 555-JUNK');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('Oops! Something went wrong. Please call us directly at (407) 555-JUNK');
+    }
   };
 
   return (
@@ -41,8 +68,19 @@ export default function Contact() {
       <main className="min-h-screen bg-white">
         <div className="bg-blue-600 text-white py-12">
           <div className="max-w-6xl mx-auto px-4">
-            <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+            <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+              <h1 className="text-4xl font-bold">Contact Us</h1>
+              <a
+                href="tel:4075558585"
+                className="mt-4 md:mt-0 bg-white text-blue-600 px-6 py-3 rounded-lg font-bold text-xl hover:bg-gray-100 transition"
+              >
+                📞 (407) 555-JUNK
+              </a>
+            </div>
             <p className="text-xl">Get a free estimate today</p>
+            <div className="mt-4 inline-block bg-yellow-400 text-blue-900 px-4 py-2 rounded-full font-bold text-sm">
+              ⚡ SAME-DAY SERVICE AVAILABLE
+            </div>
           </div>
         </div>
 
@@ -54,10 +92,14 @@ export default function Contact() {
               <div className="mb-8">
                 <h3 className="text-xl font-bold mb-2">Phone</h3>
                 <p className="text-gray-700 text-lg">
-                  <a href="tel:" className="text-blue-600 hover:underline">
-                    Call for a free quote
+                  <a
+                    href="tel:4075558585"
+                    className="text-blue-600 hover:underline font-bold text-2xl"
+                  >
+                    (407) 555-JUNK
                   </a>
                 </p>
+                <p className="text-gray-600 mt-2">Click to call for immediate service</p>
               </div>
 
               <div className="mb-8">
@@ -113,7 +155,17 @@ export default function Contact() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-6"
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field"
+                >
+                  {/* Hidden fields for Netlify Forms */}
+                  <input type="hidden" name="form-name" value="contact" />
+                  <input type="hidden" name="bot-field" />
                   <div>
                     <label htmlFor="name" className="block text-sm font-bold mb-2">
                       Full Name
