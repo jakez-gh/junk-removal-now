@@ -8,10 +8,8 @@
   NODE_VERSION = "18.0.0"
   NPM_VERSION = "9.0.0"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Redirect removed to allow static report paths like /test-report/index.html and /screenshots/ to be served
+
 
 [functions]
   directory = "api"

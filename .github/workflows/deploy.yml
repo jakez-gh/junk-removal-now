@@ -26,9 +26,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
       - name: Run tests before deployment
         run: npm test
         continue-on-error: false
+
+      - name: Publish test report to public folder
+        if: always()
+        run: |
+          mkdir -p public/test-report public/screenshots
+          if [ -d playwright-report ]; then cp -r playwright-report/* public/test-report/; fi
+          if [ -d tests/screenshots ]; then cp -r tests/screenshots/* public/screenshots/; fi
 
       - name: Build application
         run: npm run build

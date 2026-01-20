@@ -2,6 +2,8 @@ import { useState } from 'react';
 import Head from 'next/head';
 
 export default function Contact() {
+  const phoneNumber = process.env.NEXT_PUBLIC_CONTACT_PHONE || '(407) 603-6768';
+  const phoneHref = `tel:${phoneNumber.replace(/[^\d]/g, '')}`;
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -39,10 +41,10 @@ export default function Contact() {
         <meta name="description" content="Get in touch with Junk Removal Now for a free estimate" />
       </Head>
       <main className="min-h-screen bg-white">
-        <div className="bg-blue-600 text-white py-12">
+        <div className="bg-green-700 text-white py-12">
           <div className="max-w-6xl mx-auto px-4">
             <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
-            <p className="text-xl">Get a free estimate today</p>
+            <p className="text-xl">Get a free estimate today — judgment-free, we’re here to help</p>
           </div>
         </div>
 
@@ -54,9 +56,10 @@ export default function Contact() {
               <div className="mb-8">
                 <h3 className="text-xl font-bold mb-2">Phone</h3>
                 <p className="text-gray-700 text-lg">
-                  <a href="tel:" className="text-blue-600 hover:underline">
-                    Call for a free quote
+                  <a href={phoneHref} className="text-green-700 hover:underline font-semibold">
+                    {phoneNumber}
                   </a>
+                  <span className="block text-sm text-gray-600">Prefer to call? We’re available for same-day requests.</span>
                 </p>
               </div>
 
@@ -81,13 +84,15 @@ export default function Contact() {
                 </p>
               </div>
 
-              <div className="bg-blue-50 p-6 rounded-lg">
+              <div className="bg-green-50 p-6 rounded-lg">
                 <h3 className="text-xl font-bold mb-4">Why Contact Us?</h3>
                 <ul className="space-y-2 text-gray-700">
                   <li>✓ Free, no-obligation estimates</li>
                   <li>✓ Same-day service available</li>
                   <li>✓ Transparent pricing</li>
                   <li>✓ Professional and courteous team</li>
+                  <li>✓ Responsible disposal — donation and recycling whenever possible</li>
+                  <li>✓ Judgment-free help — we don’t judge, we just help</li>
                 </ul>
               </div>
             </div>
@@ -115,7 +120,7 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-700"
                     />
                   </div>
 
@@ -130,7 +135,7 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-700"
                     />
                   </div>
 
@@ -145,7 +150,7 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-700"
                     />
                   </div>
 
@@ -158,7 +163,7 @@ export default function Contact() {
                       name="serviceType"
                       value={formData.serviceType}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-700"
                     >
                       <option value="">Select a service</option>
                       <option value="residential">Residential Junk Removal</option>
@@ -181,28 +186,31 @@ export default function Contact() {
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-700"
                       placeholder="Tell us about what you need removed..."
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition"
+                    className="w-full bg-green-700 text-white font-bold py-3 rounded-lg hover:bg-green-800 transition"
                   >
                     Get Free Estimate
                   </button>
+                  <p className="mt-3 text-center text-sm text-gray-600">
+                    Prefer to call? <a href={phoneHref} className="text-green-700 font-semibold">{phoneNumber}</a>
+                  </p>
                 </form>
               )}
             </div>
           </div>
         </section>
 
-        <section className="bg-blue-50 py-16">
+          <section className="bg-green-50 py-16">
           <div className="max-w-6xl mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to Get Your Space Back?</h2>
             <p className="text-lg text-gray-700 mb-8">
-              Contact Junk Removal Now today for a professional, reliable junk removal service.
+                Contact Junk Removal Now today for professional, responsible, judgment-free junk removal.
             </p>
           </div>
         </section>

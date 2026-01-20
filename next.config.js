@@ -4,6 +4,20 @@ const nextConfig = {
   typescript: {
     tsconfigPath: './tsconfig.json',
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'web.archive.org',
+        pathname: '/**',
+      },
+    ],
+  },
   eslint: {
     // This allows build to succeed even if there are ESLint errors
     // They will still fail in pre-commit hooks
