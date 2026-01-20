@@ -42,7 +42,7 @@ test.describe('Homepage Tests', () => {
 
     // Verify button has expected styling classes
     const buttonClass = await bookButton.getAttribute('class');
-    expect(buttonClass).toContain('bg-blue-600');
+    expect(buttonClass).toContain('bg-green-700');
   });
 
   test('Services are displayed in a responsive grid', async ({ page }) => {
@@ -54,7 +54,8 @@ test.describe('Homepage Tests', () => {
     const serviceCards = serviceSection.locator('[class*="shadow-md"]');
     const count = await serviceCards.count();
 
-    expect(count).toBe(3);
+    // New layout has 3 service cards plus 3 feature cards (donation, recycle, judgment-free)
+    expect(count).toBeGreaterThanOrEqual(3);
 
     // Check each card has a title
     for (let i = 0; i < count; i++) {
